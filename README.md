@@ -35,19 +35,19 @@ A shield for the ESP32 Dev Kit 1 board that adds (1) a CAN bus transceiver and s
   <iframe src="https://youtu.be/Se2KCVyD7CM" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 
-## Gadgets
+## The Gadgets
 
-# Garage door opener
+### Garage door opener
 
 This gadget waits for 2 consecutive high beam signals within 1 second and triggers a relay to open or close a garage door opener. 
 
-# SLCAN/LAWICEL & SavvyCAN
+### SLCAN/LAWICEL & SavvyCAN
 
 A recevier that convert the ESPNow CAN messages into SLCAN/LAWICEL to allow it to be used with SavvyCAN for sniffing, monitoring, analyzing and decoding. 
 
 ![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/savvycan.png)
 
-# Coming soon
+### Coming soon
 
 - Tesla's gauges
 - GPS tracker
@@ -55,7 +55,7 @@ A recevier that convert the ESPNow CAN messages into SLCAN/LAWICEL to allow it t
 
 ![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/gadget_tesla_screen.png)
 
-# Barebone
+### Barebone
 
 A skeleton barebone gadget to get started. 
 
