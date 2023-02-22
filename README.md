@@ -1,92 +1,50 @@
 # CANaBus
 
+CANaBus is a set of software and hardware meant to extract CAN messages and create useful gadgets. The goal is to read CAN messages from a bus, extract the CAN-ID and Data and broadcast them over ESPNow. The gadgets are ESPnow receivers that filter and process the CAN-IDs and data to do something useful them.
 
+## The Gateway
 
-## Getting started
+The gateway is made of an ESP32 Dev Kit 1 board coupled with my CAN bus shield connected directly to the car's can bus ( usually though the OBDII port). To install this hardware in my car, I needed to do some modifications to make it safer to be connected permanently and create its power usage to use a little power as possible in stand by mode. 
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Power consumption while active: <100mA 
+![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/power_usage_active.png)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Power consumption while idle: <10 mA 
+![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/power_usage_idle.png)
 
-## Add your files
+The power reduction was made possible by putting the ESP32 in deep sleep when it stops detecting CAN messages and waking up every 5 seconds to check if the bus is active again. Two LEDs were desoldered from the ESP32 DevKit v1 and the shield. 
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+The CAN tranceiver's Rs pin was changed to connect to 3.3V instead of Gnd to put it in low power/ listen only mode. This helps with the power consumption and prevent it from sending any messages or flooding the bus by accident protecting the car while saving the battery.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/MrDIYca/canabus.git
-git branch -M main
-git push -uf origin main
-```
+## The Shield
 
-## Integrate with your tools
+A shield for the ESP32 Dev Kit 1 board that adds (1) a CAN bus transceiver and steps down the car's 12v down to a usable 3.3v
 
-- [ ] [Set up project integrations](https://gitlab.com/MrDIYca/canabus/-/settings/integrations)
+<figure class="video_container">
+  <iframe src="https://youtu.be/Se2KCVyD7CM" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
 
-## Collaborate with your team
+## Gadgets
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+# Garage door opener
 
-## Test and Deploy
+This gadget waits for 2 consecutive high beam signals within 1 second and triggers a relay to open or close a garage door opener. 
 
-Use the built-in continuous integration in GitLab.
+# SLCAN/LAWICEL & SavvyCAN
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+A recevier that convert the ESPNow CAN messages into SLCAN/LAWICEL to allow it to be used with SavvyCAN for sniffing, monitoring, analyzing and decoding. 
 
-***
+![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/savvycan.png)
 
-# Editing this README
+# Coming soon
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- Tesla's gauges
+- GPS tracker
+- Bus Logger
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/gadget_tesla_screen.png)
 
-## Name
-Choose a self-explaining name for your project.
+# Barebone
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+A skeleton barebone gadget to get started. 
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
