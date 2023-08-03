@@ -1,4 +1,22 @@
+/*  ============================================================================
+
+     MrDIY - CAN Shield - https://youtu.be/gtVQeTRps7o
+
+     Notes:
+     - The Power/Red LED on the shield is not enabled my default. A jumper next to 
+     the LED needs to be soldered
+     - The voltage divider is not enabled by default on v1.1. A jumper on the back
+     needs to be soldered
+     - the ACT LED is connected to pin 26 (SHIELD_LED_PIN in the code)
+     - If you are facing an assert failed error. Try getting the esp_can library 
+     from this repo ( file: libraries.zip up a folder)
+     or check https://github.com/collin80/esp32_can/issues/48
+
+  ============================================================================= */
+  
+
 #include <esp32_can.h> /* https://github.com/collin80/esp32_can */
+
 #define  SHIELD_LED_PIN   26
 
 void setup()
