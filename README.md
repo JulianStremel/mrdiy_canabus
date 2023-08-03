@@ -29,12 +29,12 @@ The CAN tranceiver's Rs pin was changed to connect to 3.3V instead of Gnd to put
 
 A shield for the ESP32 Dev Kit 1 board that adds (1) a CAN bus transceiver and steps down the car's 12v down to a usable 3.3v
 
+[![MrDIY CAN Shield YouTube video](https://img.youtube.com/vi/Se2KCVyD7CM/0.jpg)](https://www.youtube.com/watch?v=Se2KCVyD7CM)
+
 <a href="https://store.mrdiy.ca/p/esp32-can-bus-shield/"> Get the ESP32 CAN Shield here</a>
 
+![Schematic](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/schematic_can_shield__esp32_v1.2.png)
 
-<figure class="video_container">
-  <iframe src="https://youtu.be/Se2KCVyD7CM" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
 
 ## The Gadgets
 
