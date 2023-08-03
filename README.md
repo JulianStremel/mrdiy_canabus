@@ -6,6 +6,8 @@ CANaBus is a set of software and hardware meant to extract CAN messages and crea
 
 The gateway is made of an ESP32 Dev Kit 1 board coupled with my CAN bus shield connected directly to the car's can bus ( usually though the OBDII port). To install this hardware in my car, I needed to do some modifications to make it safer to be connected permanently and create its power usage to use a little power as possible in stand by mode. 
 
+[![MrDIY Wireless Gateway YouTube video](https://img.youtube.com/vi/XiqU5wpnupk/0.jpg)](https://www.youtube.com/watch?v=XiqU5wpnupk)
+
 <table>
 <tr>
 
