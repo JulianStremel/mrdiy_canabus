@@ -1,10 +1,8 @@
-# CANaBus
-
-CANaBus is a set of software and hardware meant to extract CAN messages and create useful gadgets. The goal is to read CAN messages from a bus, extract the CAN-ID and Data and broadcast them over ESPNow. The gadgets are ESPnow receivers that filter and process the CAN-IDs and data to do something useful them.
+This project comprises a combination of software and hardware components designed to extract Controller Area Network (CAN) messages and generate practical gadgets. The primary objective is to receive CAN messages from a bus, extract the CAN-ID and Data from them, and subsequently transmit this information over ESPNow. The gadgets serve as ESPNow receivers, responsible for filtering and processing the received CAN-IDs and data to perform specific useful tasks.
 
 ## The Gateway
 
-The gateway is made of an ESP32 Dev Kit 1 board coupled with my CAN bus shield connected directly to the car's can bus ( usually though the OBDII port). To install this hardware in my car, I needed to do some modifications to make it safer to be connected permanently and create its power usage to use a little power as possible in stand by mode. 
+The gateway consists of an ESP32 Dev Kit 1 board paired with a CAN bus shield, directly connected to the car's CAN bus, typically via the OBDII port. To install this hardware in my car securely, I performed certain modifications to ensure a safe permanent connection and minimize power consumption while in standby mode. See my full video below.
 
 [![MrDIY Wireless Gateway YouTube video](https://img.youtube.com/vi/XiqU5wpnupk/0.jpg)](https://www.youtube.com/watch?v=XiqU5wpnupk)
 
@@ -31,7 +29,8 @@ The CAN tranceiver's Rs pin was changed to connect to 3.3V instead of Gnd to put
 
 A shield for the ESP32 Dev Kit 1 board that adds (1) a CAN bus transceiver and steps down the car's 12v down to a usable 3.3v
 
-![ESP32 Shield](https://i9.ytimg.com/vi/Se2KCVyD7CM/mqdefault.jpg?v=63d1884b&sqp=CIyW1p8G&rs=AOn4CLCGY11Qj282vpsAp2_cl1cp5jpzcw)
+<a href="https://store.mrdiy.ca/p/esp32-can-bus-shield/"> Get the ESP32 CAN Shield here</a>
+
 
 <figure class="video_container">
   <iframe src="https://youtu.be/Se2KCVyD7CM" frameborder="0" allowfullscreen="true"> </iframe>
@@ -41,23 +40,18 @@ A shield for the ESP32 Dev Kit 1 board that adds (1) a CAN bus transceiver and s
 
 ### Garage door opener
 
-This gadget waits for 2 consecutive high beam signals within 1 second and triggers a relay to open or close a garage door opener. 
+[WIP] This gadget waits for a signal from the car to trigger a relay to open or close a garage door. 
 
 ### SLCAN/LAWICEL & SavvyCAN
 
-A recevier that convert the ESPNow CAN messages into SLCAN/LAWICEL to allow it to be used with SavvyCAN for sniffing, monitoring, analyzing and decoding. 
+[WIP] This gadget converts the ESPNow CAN messages into SLCAN/LAWICEL format to allow it to be used with SavvyCAN for sniffing, monitoring, analyzing and decoding CAN messages. 
 
 ![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/savvycan.png)
 
-### Coming soon
+### Other Gadgets
 
-- Tesla's gauges
-- GPS tracker
-- Bus Logger
+[WIP]
 
 ![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/gadget_tesla_screen.png)
 
-### Barebone
-
-A skeleton barebone gadget to get started. 
 
