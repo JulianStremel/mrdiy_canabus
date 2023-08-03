@@ -2,7 +2,7 @@ This project comprises a combination of software and hardware components designe
 
 ## The Gateway
 
-The gateway consists of an ESP32 Dev Kit 1 board paired with a CAN bus shield, directly connected to the car's CAN bus, typically via the OBDII port. To install this hardware in my car securely, I performed certain modifications to ensure a safe permanent connection and minimize power consumption while in standby mode. See my full video below.
+The gateway consists of an ESP32 Dev Kit 1 board paired with a CAN bus shield (see below), directly connected to the car's CAN bus, typically via the OBDII port. See my full video below.
 
 [![MrDIY Wireless Gateway YouTube video](https://img.youtube.com/vi/XiqU5wpnupk/0.jpg)](https://www.youtube.com/watch?v=XiqU5wpnupk)
 
@@ -13,7 +13,7 @@ The gateway consists of an ESP32 Dev Kit 1 board paired with a CAN bus shield, d
 Power consumption while active: <100mA 
 ![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/power_usage_active.png)</td>
 <td>
-Power consumption while idle: <10 mA 
+Power consumption while sleep with LEDs removed: <10 mA 
 ![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/power_usage_idle.png)
 </td>
 
@@ -27,11 +27,14 @@ The CAN tranceiver's Rs pin was changed to connect to 3.3V instead of Gnd to put
 
 ## The Shield
 
-A shield for the ESP32 Dev Kit 1 board that adds (1) a CAN bus transceiver and steps down the car's 12v down to a usable 3.3v
+I designed a shield for the ESP32 Dev Kit 1 board [<a href='https://geni.us/jS2Lx1W'>Amazon</a>, <a href='https://s.click.aliexpress.com/e/_DmhOymx'>AliExpress</a>] that adds a CAN bus transceiver and steps down the car's battery voltage down to a usable 3.3v.
+
+In the upgraded (version 1.1) shield, I added a voltage divider on D32, a 120Ω CAN termination resistor and a physical toggle switch that allows the CAN transceiver to go in Listen-only / Do-Not-Transmit mode.
+
+Get the ESP32 <a href="https://store.mrdiy.ca/p/esp32-can-bus-shield/"> CAN Shield here.</a>
 
 [![MrDIY CAN Shield YouTube video](https://img.youtube.com/vi/Se2KCVyD7CM/0.jpg)](https://www.youtube.com/watch?v=Se2KCVyD7CM)
 
-<a href="https://store.mrdiy.ca/p/esp32-can-bus-shield/"> Get the ESP32 CAN Shield here</a>
 
 ![Schematic](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/schematic_can_shield__esp32_v1.2.png)
 
