@@ -8,8 +8,11 @@
      - The voltage divider is not enabled by default on v1.1. A jumper on the back
      needs to be soldered
      - the ACT LED is connected to pin 26 (SHIELD_LED_PIN in the code)
+
+    ATTENTION:
+    ----------
      - If you are facing an assert failed error. Try getting the esp_can library 
-     from this repo ( file: libraries.zip up a folder)
+     from my repo instead ( the file is called: libraries.zip on the root folder)
      or check https://github.com/collin80/esp32_can/issues/48
 
   ============================================================================= */
@@ -22,10 +25,17 @@
 void setup()
 {
   Serial.begin(115200);
+
+  Serial.println("------------------------");
+  Serial.println("    MrDIY CAN SHIELD");
+  Serial.println("------------------------");
+
+  Serial.println(" CAN...............INIT");
   CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4);
-  CAN0.setListenOnlyMode(true);
   CAN0.begin(500000); // 500Kbps
   CAN0.watchFor();
+  Serial.println(" CAN............500Kbps");
+
 }
 
 
