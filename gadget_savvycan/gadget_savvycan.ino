@@ -63,7 +63,6 @@ void loop() {
     fps = frameCounter;  // Current fps is the frame counter value
     frameCounter = 0;    // Reset the frame counter
     lastFpsCheck = millis();  // Update the last check time
-
     Serial.print("FPS: ");
     Serial.println(fps);
   }
@@ -80,7 +79,6 @@ void OnDataRecv(uint8_t *mac, uint8_t *incomingData, uint8_t len) {
   if ( got_new_can_msg ) return;
   memcpy(&esp_frame, incomingData, sizeof(esp_frame));
   got_new_can_msg = true;   // TODO: queue the msgs
-  // Serial.println("OnDataRecv");
 }
 
 /* ============================ CAN to SLCAN/LAWICEL ================================= */
@@ -94,25 +92,33 @@ void sendCanOverSerial() {
 
     char outputBuff[45]; // Increased size for safety
     int idx = 0;
+
+    /*
+        if (esp_frame.can_id <= 0x7FF) {
+          // Standard 11-bit CAN ID
+          idx += snprintf(outputBuff + idx, sizeof(outputBuff) - idx, "t%03x", esp_frame.can_id);
+        } else if (esp_frame.can_id <= 0x1FFFFFFF) {
+          // Extended 29-bit CAN ID
+          idx += snprintf(outputBuff + idx, sizeof(outputBuff) - idx, "T%08x", esp_frame.can_id);
+        } else {
+          // Invalid CAN ID
+          return;
+        }
+    */
     idx += snprintf(outputBuff + idx, sizeof(outputBuff) - idx, "t%03x", esp_frame.can_id);
     idx += snprintf(outputBuff + idx, sizeof(outputBuff) - idx, "%d", esp_frame.can_len);
     for (int i = 0; i < esp_frame.can_len; i++) {
       idx += snprintf(outputBuff + idx, sizeof(outputBuff) - idx, "%02x", esp_frame.can_data[i]);
     }
+
     if (send_timestamp) {
-
-      uint32_t time_now = slcan_get_time();
-      uint8_t ts1, ts0;
-      ts1 = (time_now & 0xFF00) >> 8;
-      ts0 = (time_now & 0xFF);
-      outputBuff[idx++] = ts1 >> 4;
-      outputBuff[idx++] = ts1 & 0x0F;
-      outputBuff[idx++] = ts0 >> 4;
-      outputBuff[idx++] = ts0 & 0x0F;
-
+      
+      uint16_t timestamp = (uint16_t) millis() % 60000; // Wrap around every minute
+      idx += snprintf(outputBuff + idx, sizeof(outputBuff) - idx, "%02x", slcan_get_time());
     }
-    outputBuff[idx++] = '\r';  // Carriage return
-    outputBuff[idx] = '\0';    // Null-terminate the buffer
+    
+    outputBuff[idx++] = '\r';     // Carriage return
+    outputBuff[idx++] = '\0';    // Null-terminate the buffer
     Serial.print(outputBuff);
 
     got_new_can_msg = false;
@@ -120,7 +126,7 @@ void sendCanOverSerial() {
 }
 
 unsigned short slcan_get_time() {
-  
+
   unsigned long currentTime = millis();
   unsigned short timestamp = static_cast<unsigned short>(currentTime % 60000);
   return timestamp;

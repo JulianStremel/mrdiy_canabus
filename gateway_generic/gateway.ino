@@ -50,9 +50,9 @@
 // --- shield pins ---------------------
 
 #include "driver/gpio.h"
-#define SHIELD_LED_PIN GPIO_NUM_26   // GPIO_NUM_26=Shield  26=WiCAN
-#define SHIELD_CAN_RX 5    //  GPIO_NUM_5=Shield   0=WiCAN
-#define SHIELD_CAN_TX 4    //  GPIO_NUM_4=Shield   3=WiCAN
+#define SHIELD_LED_PIN GPIO_NUM_26 
+#define SHIELD_CAN_RX 5 
+#define SHIELD_CAN_TX 4 
 
 #define SHIELD_VOLTAGE_DIVIDER 32 /* the jumper must be soldered on the v1.1 shield. Voltage divider doesn't work/exist on v1.0 */
 
