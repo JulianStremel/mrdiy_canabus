@@ -1,5 +1,9 @@
 This project comprises a combination of software and hardware components designed to extract Controller Area Network (CAN) messages and generate practical gadgets. The primary objective is to receive CAN messages from a bus, extract the CAN-ID and Data from them, and subsequently transmit this information over ESPNow. The gadgets serve as ESPNow receivers, responsible for filtering and processing the received CAN-IDs and data to perform specific useful tasks.
 
+## Install
+
+Some of the fimrwares are available to be installed online directly to ESP32/ESP8266 using Chrome with one click - <a href='https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher'>https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher</a>
+
 ## The Gateway
 
 The gateway consists of an ESP32 Dev Kit 1 board paired with a CAN bus shield (see below), directly connected to the car's CAN bus, typically via the OBDII port. See my full video below.
@@ -43,13 +47,15 @@ Get the ESP32 <a href="https://store.mrdiy.ca/p/esp32-can-bus-shield/"> CAN Shie
 
 ### Garage door opener
 
-[WIP] This gadget waits for a signal from the car to trigger a relay to open or close a garage door. 
+This gadget waits for a signal from the car to trigger a relay to open or close a garage door. 
+
+[![MrDIY Gadget: Garage Door Opener YouTube video](https://img.youtube.com/vi/PJhCqS9ZGLU/0.jpg)](https://www.youtube.com/watch?v=PJhCqS9ZGLU)
 
 ### SLCAN/LAWICEL & SavvyCAN
 
-[WIP] This gadget converts the ESPNow CAN messages into SLCAN/LAWICEL format to allow it to be used with SavvyCAN for sniffing, monitoring, analyzing and decoding CAN messages. 
+This gadget converts the ESPNow CAN messages into SLCAN/LAWICEL format to allow it to be used with SavvyCAN for sniffing, monitoring, analyzing and decoding CAN messages. 
 
-![SavvyCAN](https://gitlab.com/MrDIYca/canabus/-/raw/main/img/savvycan.png)
+[![MrDIY Gadget: SavvyCAN on ESP8266 YouTube video](https://img.youtube.com/vi/pontoaAcyZM/0.jpg)](https://www.youtube.com/watch?v=pontoaAcyZM)
 
 ### Other Gadgets
 
