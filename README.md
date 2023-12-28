@@ -2,7 +2,7 @@ This project comprises a combination of software and hardware components designe
 
 ## Install
 
-Some of the fimrwares are available to be installed online directly to ESP32/ESP8266 using Chrome with one click - <a href='https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher'>https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher</a>
+Certain firmware options (Gateway and Gadgets) can be conveniently installed online onto ESP32/ESP8266 devices with just a single click using the Chrome browser at <a href='https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher'>https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher</a>
 
 ## The Gateway
 
