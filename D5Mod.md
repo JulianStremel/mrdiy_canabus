@@ -21,14 +21,15 @@ Carefully open the 3D printed case and remove the shield to access the ESP32.
 
 ![Step Image](img/d5_mod/2.png)
 
----
+
+<br>
 
 ## 2. Unplug the ESP32 from the Shield
 Carefully unplug the ESP32 from the shield to access the pin configuration for modification.
 
 ![Step Image](img/d5_mod/3.png)
 
----
+<br>
 
 ## 3. Cut the D5 Pin on the ESP32
 - Locate the `D5 (GPIO5)` pin on the ESP32.
@@ -36,7 +37,7 @@ Carefully unplug the ESP32 from the shield to access the pin configuration for m
 
 ![Step Image](img/d5_mod/4.png)
 
----
+<br>
 
 ## 4. Solder a Wire Between D5 and D22 on the Shield
 - Solder a **jumper wire** between the **D5 pin** and **D22 pin** on the shield.
@@ -44,7 +45,7 @@ Carefully unplug the ESP32 from the shield to access the pin configuration for m
 
 ![Step Image](img/d5_mod/6.png)
 
----
+<br>
 
 ## 5. Put Everything Back Together
 - Plug the ESP32 back into the shield.
@@ -52,7 +53,7 @@ Carefully unplug the ESP32 from the shield to access the pin configuration for m
 
 ![Step Image](img/d5_mod/2.png)
 
----
+<br>
 
 ## 6. Change the Code to Use GPIO22 for CAN TX Instead of GPIO5
 Update your code to reflect the new TX pin assignment and upload it to the ESP32.
