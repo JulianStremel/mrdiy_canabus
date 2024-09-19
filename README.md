@@ -91,3 +91,6 @@ This gadget converts the ESPNow CAN messages into SLCAN/LAWICEL format to allow 
 coming soon ...
 
 
+## License
+
+This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
