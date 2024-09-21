@@ -10,8 +10,6 @@ To modify the device to prevent it from entering dominant mode when permanently 
 
 **Disclaimer:** I am not responsible for any damages caused by following these instructions, including but not limited to damage to your vehicle, equipment, or any legal consequences that may arise. Proceed at your own risk and ensure you fully understand the potential impact of writing to a CAN bus before making any modifications.
 
-<br><br>
-![Step Image](img/d4_mod/0.png)
 
 
 <br>
