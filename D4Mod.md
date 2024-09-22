@@ -10,7 +10,7 @@ To modify the device to prevent it from entering dominant mode when permanently 
 
 **Disclaimer:** I am not responsible for any damages caused by following these instructions, including but not limited to damage to your vehicle, equipment, or any legal consequences that may arise. Proceed at your own risk and ensure you fully understand the potential impact of writing to a CAN bus before making any modifications.
 
-
+![Step Image](img/d4_mod/0.png)
 
 <br>
 
@@ -49,22 +49,28 @@ Carefully unplug the ESP32 from the shield to access the pin configuration for m
 - Plug the ESP32 back into the shield.
 - Reassemble the 3D printed case and ensure everything is securely fitted.
 
-![Step Image](img/d4_mod/5.png)
+![Step Image](img/d4_mod/1.png)
 
 <br>
 
 ## 6. Change the Code to Use GPIO21 for CAN TX Instead of GPIO4
 Update your code to reflect the new TX pin assignment and upload it to the ESP32.
 
-Before (sample code): 
+Before (pins assignment): 
 ```cpp
-CAN.setPins(5, 4); 
+Rx = 5
+Tx = 4
 ```
 
-After (sample code): 
+After (pins assignment): 
 ```cpp
-CAN.setPins(5, 21); 
+Rx = 5
+Tx = 21
 ```
+<br>
 
+![Step Image](img/d4_mod/6.png)
+
+<br>
 
 By following these steps, the ESP32 will no longer enter dominant mode when connected to the OBDII port during boot. 
