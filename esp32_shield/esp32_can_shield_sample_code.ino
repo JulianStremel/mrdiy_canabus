@@ -2,18 +2,12 @@
 
      MrDIY - CAN Shield - https://youtu.be/gtVQeTRps7o
 
-     Notes:
-     - The Power/Red LED on the shield is not enabled my default. A jumper next to 
-     the LED needs to be soldered
-     - The voltage divider is not enabled by default on v1.1. A jumper on the back
-     needs to be soldered
-     - the ACT LED is connected to pin 26 (SHIELD_LED_PIN in the code)
 
-    ATTENTION:
-    ----------
-     - If you are facing an assert failed error. Try getting the esp_can library 
-     from my repo instead ( the file is called: libraries.zip on the root folder)
-     or check https://github.com/collin80/esp32_can/issues/48
+        ***********************  IMPORTANT NOTE ****************************
+
+        For shields v1.0, v1.1, and v1.2, use D5 for CAN RX and D4 for CAN TX
+        For shields v1.3 and later, use D4 for CAN RX and D5 for CAN TX
+
 
   ============================================================================= */
   
@@ -31,7 +25,7 @@ void setup()
   Serial.println("------------------------");
 
   Serial.println(" CAN...............INIT");
-  CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4);
+  CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4); // see important note above
   CAN0.begin(500000); // 500Kbps
   CAN0.watchFor();
   Serial.println(" CAN............500Kbps");

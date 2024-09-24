@@ -2,14 +2,11 @@
 
      MrDIY - CAN Shield - https://youtu.be/gtVQeTRps7o
 
-     THIS VERSION DO NOT USE the esp32_can LIBRARY.
+        ***********************  IMPORTANT NOTE ****************************
 
-     Notes:
-     - The Power/Red LED on the shield is not enabled my default. A jumper next to
-     the LED needs to be soldered
-     - The voltage divider is not enabled by default on v1.1. A jumper on the back
-     needs to be soldered
-     - the ACT LED is connected to pin 26 (SHIELD_LED_PIN in the code)
+        For shields v1.0, v1.1, and v1.2, use D5 for CAN RX and D4 for CAN TX
+        For shields v1.3 and later, use D4 for CAN RX and D5 for CAN TX
+
 
      The API gives other possible speeds and alerts:
       https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/twai.html
@@ -31,8 +28,8 @@
 #define POLLING_RATE_MS 1000
 
 #define SHIELD_LED_PIN GPIO_NUM_26
-#define SHIELD_CAN_RX GPIO_NUM_5
-#define SHIELD_CAN_TX GPIO_NUM_4
+#define SHIELD_CAN_RX GPIO_NUM_5    // see important note above
+#define SHIELD_CAN_TX GPIO_NUM_4     // see important note above
 #define SHIELD_VOLTAGE_DIVIDER GPIO_NUM_32  /* the jumper must be soldered on the v1.1 shield. Voltage divider doesn't work/exist on v1.0. MAXIMUM 15 Volt Power input */
 
 
@@ -59,7 +56,7 @@ bool initCAN() {
 
   debugln(" CAN...............INIT");
 
-  twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT((gpio_num_t)SHIELD_CAN_TX, (gpio_num_t)SHIELD_CAN_RX, TWAI_MODE_LISTEN_ONLY);
+  twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT((gpio_num_t)SHIELD_CAN_TX, (gpio_num_t)SHIELD_CAN_RX, TWAI_MODE_LISTEN_ONLY);   // see important note above
   g_config.rx_queue_len = 32;
   g_config.tx_queue_len = 2;  // not needed but here for testing
 

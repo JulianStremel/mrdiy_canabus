@@ -7,24 +7,13 @@
     code for MrDIY CAN Shield & DOIT ESP32 DEVKIT V1 (30 pins version)
     https://store.mrdiy.ca/p/esp32-can-bus-shield/
 
-    TWAI_MODE_LISTEN_ONLY is used so that the TWAI controller will not influence the bus.
 
-    The API gives other possible speeds and alerts:
-    https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/twai.html
+        ***********************  IMPORTANT NOTE ****************************
 
-    Example output from a can bus message:
-    -> Message received
-    -> Message is in Standard Format
-    -> ID: 604
-    -> Byte: 0 = 00, 1 = 0f, 2 = 13, 3 = 02, 4 = 00, 5 = 00, 6 = 08, 7 = 00
+        For shields v1.0, v1.1, and v1.2, use D5 for CAN RX and D4 for CAN TX
+        For shields v1.3 and later, use D4 for CAN RX and D5 for CAN TX
 
-    Example output with alerts:
-    -> Alert: A (Bit, Stuff, CRC, Form, ACK) error has occurred on the bus.
-    -> Bus error count: 171
-    -> Alert: The RX queue is full causing a received frame to be lost.
-    -> RX buffered: 4  RX missed: 46 RX overrun 0
-
-     original code created 05-11-2022 by Stephan Martin (designer2k2)
+        
 
   ============================================================================= */
 

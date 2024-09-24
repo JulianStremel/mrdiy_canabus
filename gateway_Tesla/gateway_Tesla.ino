@@ -3,6 +3,13 @@
      MrDIY - CAN Gateway
      CAN Shield - https://youtu.be/gtVQeTRps7o
 
+
+        ***********************  IMPORTANT NOTE ****************************
+
+        For shields v1.0, v1.1, and v1.2, use D5 for CAN RX and D4 for CAN TX
+        For shields v1.3 and later, use D4 for CAN RX and D5 for CAN TX
+
+
   ============================================================================= */
 
 // ---- serial debug -------------------
