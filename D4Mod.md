@@ -1,7 +1,9 @@
 # How to Avoid Dominant Mode on Boot
-
-**IMPORTANT NOTE**: his document applies only to shields versions 1.0, 1.1, and 1.2.
-
+<br>
+<div align="center">
+<u>IMPORTANT NOTE</u>: this document applies only to shields versions <b>1.0, 1.1, and 1.2</b>.
+</div>
+<br><br>
 In **RW** mode, hot-plugging the ESP32 with the shield causes the CAN transceiver to enter a dominant state (logical 0) during boot for up to 300ms. During this brief period, no devices on the CAN bus can transmit, and other CAN controllers may generate error frames or increase their error counters. However, once the ESP32 finishes booting, this issue resolves.
 
 If you're using the ESP32 shield for troubleshooting and you power the ESP32 via USB before connecting it to the CAN bus/OBDII port while in RW mode, this modification is *not* required. Additionally, if you're only using it in **R** (read-only) mode, this mod is unnecessary.
