@@ -1,7 +1,7 @@
 /*  ============================================================================
 
      MrDIY.ca CAN Project
-    
+
     CAN Gateway
 
     code for MrDIY CAN Shield & DOIT ESP32 DEVKIT V1 (30 pins version)
@@ -13,7 +13,7 @@
         For shields v1.0, v1.1, and v1.2, use D5 for CAN RX and D4 for CAN TX
         For shields v1.3 and later, use D4 for CAN RX and D5 for CAN TX
 
-        
+
 
   ============================================================================= */
 
@@ -36,12 +36,13 @@
 #define debugln(x)
 #endif
 
+#include <Arduino.h>
+
 // --- shield pins ---------------------
 
-#include "driver/gpio.h"
-#define SHIELD_LED_PIN GPIO_NUM_26 
-#define SHIELD_CAN_RX 5 
-#define SHIELD_CAN_TX 4 
+#define SHIELD_LED_PIN  26
+#define SHIELD_CAN_RX   5
+#define SHIELD_CAN_TX   4
 
 #define SHIELD_VOLTAGE_DIVIDER 32 /* the jumper must be soldered on the v1.1 shield. Voltage divider doesn't work/exist on v1.0 */
 
@@ -88,12 +89,10 @@ void setup() {
   Serial.begin(115200);
 #endif
 
-  //pinMode(SHIELD_LED_PIN, OUTPUT);
-  gpio_pad_select_gpio(SHIELD_LED_PIN);
-  gpio_set_direction(SHIELD_LED_PIN, GPIO_MODE_OUTPUT);
+  pinMode(SHIELD_LED_PIN, OUTPUT);
 
   // flash the LED
-  GPIO.out_w1ts = (1 << SHIELD_LED_PIN);
+  digitalWrite(SHIELD_LED_PIN, HIGH);
 
   debugln("");
   debugln("------------------------");
@@ -117,8 +116,7 @@ void setup() {
     ESP.restart();
   }
 
-  GPIO.out_w1tc = (1 << SHIELD_LED_PIN);
-  //digitalWrite(SHIELD_LED_PIN, HIGH);
+  digitalWrite(SHIELD_LED_PIN, HIGH);
 }
 
 bool initESPNow() {
@@ -192,7 +190,7 @@ bool initCAN() {
 int getMeshID() {
 
   uint8_t baseMac[6];
-  esp_read_mac(baseMac, ESP_MAC_WIFI_STA);
+  WiFi.macAddress(baseMac);
   uint32_t uniqueID = 0;
   for (int i = 2; i < 6; i++) {
     uniqueID <<= 8;
@@ -252,15 +250,13 @@ void loop() {
 
     // blink LED if needed
     if (ledShouldBeOn) {
-      GPIO.out_w1ts = (1 << SHIELD_LED_PIN);
-      //digitalWrite(SHIELD_LED_PIN, HIGH);
+      digitalWrite(SHIELD_LED_PIN, HIGH);
       led_last_on_timestamp = currentMillis;
     }
   }
 
   if (currentMillis - led_last_on_timestamp >= 1000) {
-    GPIO.out_w1tc = (1 << SHIELD_LED_PIN);  // Turn off the LED
-    //digitalWrite(SHIELD_LED_PIN, LOW);
+    digitalWrite(SHIELD_LED_PIN, LOW);
     led_last_on_timestamp = 0;              // Reset the LED turn-on time
   }
 
