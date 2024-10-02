@@ -1,8 +1,13 @@
 This project comprises a combination of software and hardware components designed to extract Controller Area Network (CAN) messages and generate practical gadgets. The primary objective is to receive CAN messages from a bus, extract the CAN-ID and Data from them, and subsequently transmit this information over ESPNow. The gadgets serve as ESPNow receivers, responsible for filtering and processing the received CAN-IDs and data to perform specific useful tasks.
 
-## How to Install My Code
+## How to Install The Code
 
 Certain firmware options (Gateway and Gadgets) can be conveniently installed online onto ESP32/ESP8266 devices with just a single click using the Chrome browser at <a href='https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher'>https://mrdiyca.gitlab.io/mrdiy-esp-online-flasher</a>
+
+## 3D Printable Files
+
+You can find the STL files at my <a href='https://makerworld.com/en/@mrdiy'>MakerWorld profile</a>.
+
 
 ## The Gateway / Bridge
 
