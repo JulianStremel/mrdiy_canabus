@@ -25,7 +25,7 @@ void setup()
   Serial.println("------------------------");
 
   Serial.println(" CAN...............INIT");
-  CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4); // see important note above
+  CAN0.setCANPins(GPIO_NUM_4, GPIO_NUM_5); //config for shield v1.3+, see important note above!
   CAN0.begin(500000); // 500Kbps
   CAN0.watchFor();
   Serial.println(" CAN............500Kbps");

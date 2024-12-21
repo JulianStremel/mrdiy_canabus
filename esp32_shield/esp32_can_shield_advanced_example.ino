@@ -28,8 +28,8 @@
 #define POLLING_RATE_MS 1000
 
 #define SHIELD_LED_PIN GPIO_NUM_26
-#define SHIELD_CAN_RX GPIO_NUM_5    // see important note above
-#define SHIELD_CAN_TX GPIO_NUM_4     // see important note above
+#define SHIELD_CAN_RX GPIO_NUM_4    //config for shield v1.3+, see important note above!
+#define SHIELD_CAN_TX GPIO_NUM_5    //config for shield v1.3+, see important note above!
 #define SHIELD_VOLTAGE_DIVIDER GPIO_NUM_32  /* the jumper must be soldered on the v1.1 shield. Voltage divider doesn't work/exist on v1.0. MAXIMUM 15 Volt Power input */
 
 

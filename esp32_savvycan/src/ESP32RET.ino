@@ -119,7 +119,8 @@ void loadSettings()
         FastLED.show();
         //pinMode(21, OUTPUT);
         //digitalWrite(21, LOW);
-        CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4);
+        CAN0.setCANPins(GPIO_NUM_4, GPIO_NUM_5);     // use this for shield v1.3 and later
+        //  CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4); // use this for shield v1.2 and earlier
     }
 
     if (nvPrefs.getString("SSID", settings.SSID, 32) == 0)

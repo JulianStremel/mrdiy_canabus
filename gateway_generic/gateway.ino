@@ -41,8 +41,8 @@
 // --- shield pins ---------------------
 
 #define SHIELD_LED_PIN  26
-#define SHIELD_CAN_RX   5
-#define SHIELD_CAN_TX   4
+#define SHIELD_CAN_RX   4
+#define SHIELD_CAN_TX   5
 
 #define SHIELD_VOLTAGE_DIVIDER 32 /* the jumper must be soldered on the v1.1 shield. Voltage divider doesn't work/exist on v1.0 */
 
