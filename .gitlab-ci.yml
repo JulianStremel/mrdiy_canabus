@@ -1,0 +1,15 @@
+image: python:3.9
+
+pages:
+  stage: deploy
+  script:
+    - pip install mkdocs
+    - mkdocs new .
+    - mv assembly.md docs/assembly.md
+    - mv img/assembly/* docs/img/*
+    - mkdocs build -d public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main  # Change this to your default branch if needed
