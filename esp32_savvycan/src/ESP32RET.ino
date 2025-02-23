@@ -83,7 +83,8 @@ void loadSettings()
     settings.useBinarySerialComm = nvPrefs.getBool("binarycomm", false);
     settings.logLevel = nvPrefs.getUChar("loglevel", 1); //info
     settings.wifiMode = nvPrefs.getUChar("wifiMode", 2); //Wifi defaults to creating an AP
-    settings.enableBT = nvPrefs.getBool("enable-bt", false);
+    //settings.enableBT = nvPrefs.getBool("enable-bt", false);
+    settings.enableBT = nvPrefs.getBool("enable-bt", true); // change julian
     settings.enableLawicel = nvPrefs.getBool("enableLawicel", true);
     settings.systemType = 0; //nvPrefs.getUChar("systype", (espChipRevision > 2) ? 0 : 1); //0 = A0, 1 = EVTV ESP32
 
@@ -119,8 +120,8 @@ void loadSettings()
         FastLED.show();
         //pinMode(21, OUTPUT);
         //digitalWrite(21, LOW);
-        CAN0.setCANPins(GPIO_NUM_4, GPIO_NUM_5);     // use this for shield v1.3 and later
-        //  CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4); // use this for shield v1.2 and earlier
+        //  CAN0.setCANPins(GPIO_NUM_4, GPIO_NUM_5);     // use this for shield v1.3 and later
+        CAN0.setCANPins(GPIO_NUM_5, GPIO_NUM_4); // use this for shield v1.2 and earlier
     }
 
     if (nvPrefs.getString("SSID", settings.SSID, 32) == 0)
@@ -208,12 +209,12 @@ void setup()
     SysSettings.lawicelTimestamping = false;
     SysSettings.lawicelPollCounter = 0;
     
-    //elmEmulator.setup();
+    elmEmulator.setup();
 
-    //Serial.print("Free heap: ");
-    //Serial.println(esp_get_free_heap_size());
+    Serial.print("Free heap: ");
+    Serial.println(esp_get_free_heap_size());
 
-   // Serial.print("Done with init\n");
+    Serial.print("Done with init\n");
 }
  
 /*

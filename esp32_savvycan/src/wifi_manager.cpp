@@ -83,7 +83,7 @@ void WiFiManager::loop()
             {
                 Serial.print("SSID: ");
                 Serial.println((const char *)settings.SSID);
-                Serial.println("Password: mrdiy");
+                Serial.println("Password: mrdiy.ca");
                 Serial.print("IP: ");
                 Serial.println(WiFi.softAPIP());
                 needServerInit = true;
